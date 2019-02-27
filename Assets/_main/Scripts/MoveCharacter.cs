@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MoveCharacter : MonoBehaviour
 {
-    private float horizontal, vertical;
 
     public float speed = 5f;
     
@@ -17,11 +16,11 @@ public class MoveCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        float horizontalDirection = Input.GetAxisRaw("Horizontal");
+        float verticalDirection = Input.GetAxisRaw("Vertical");
+        Vector3 moveDirection = new Vector3(horizontalDirection, 0, verticalDirection).normalized;
 
-
-        transform.Translate(new Vector3(horizontal,0,vertical).normalized * Time.deltaTime * speed);
+        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
 
     }
 }
