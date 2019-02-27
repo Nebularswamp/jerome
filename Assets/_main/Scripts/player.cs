@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    item[] inventory = new item[2];
+    item[] inventory = new item[4];
+    item[] hands = new item[2];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +17,9 @@ public class player : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void handAction(int h) {
+
     }
 }
