@@ -8,17 +8,19 @@ public class player : MonoBehaviour
     public float speed = 5f;
 
     GameObject myCamera;
+    GameObject myCanvas;
     Vector3 lookDirection;
     item[] inventory = new item[4];
-    item[] hands = new item[2];
+    GameObject[] hands = new GameObject[2];
 
-    float pickupRange = 3.0f;
+    float pickupRange = 5.0f;
 
     
     // Start is called before the first frame update
     void Start()
     {
         myCamera = Camera.main.gameObject;
+        myCanvas = GameObject.FindGameObjectWithTag("mainCanvas");
     }
 
     // Update is called once per frame
@@ -42,6 +44,12 @@ public class player : MonoBehaviour
         transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
         #endregion
 
+        #region Item pickup
+        for (int i = 0; i < 2; i++) {
+            if (Input.GetMouseButtonDown(i)) handAction(i);
+        }
+        #endregion
+
     }
 
     void handAction(int h) {
@@ -49,9 +57,15 @@ public class player : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(transform.position, lookDirection, out hit, pickupRange, 1 << 9)) {
                 GameObject pickupItem = hit.transform.gameObject;
-                hands[h] = pickupItem.GetComponent<item>();
-                Destroy(pickupItem);
+                hands[h] = pickupItem;
+                updateHands(h);
             }
         }
+    }
+
+    void updateHands(int h) {
+        hands[h].transform.parent = myCanvas.transform;
+        hands[h].transform.localPosition = new Vector3(-140 + 340 * h, 35, 90);
+        hands[h].transform.localRotation = Quaternion.Euler(new Vector3(180, 30, 240));
     }
 }

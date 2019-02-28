@@ -8,11 +8,14 @@ public abstract class item : MonoBehaviour
     public GameObject myPrefab;
     public int damage = 1;
 
+    private void Start() {
+
+    }
+
     public virtual void use() {
         
     }
 
     public virtual void discard() {
-        Instantiate(myPrefab, transform.position, Quaternion.identity);
     }
 }
