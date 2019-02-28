@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCharacter : MonoBehaviour //moves character relative 
+public class MoveCharacter : MonoBehaviour //moves character relative to camera
 {
+
+    /***OBSOLETE***/
 
     public float speed = 5f;
 
