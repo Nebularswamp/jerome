@@ -12,7 +12,7 @@ public class player : MonoBehaviour
     Vector3 lookDirection;
     item[] inventory = new item[4];
     GameObject[] hands = new GameObject[2];
-
+    bool discardMode = false;
     float pickupRange = 5.0f;
 
     
@@ -21,6 +21,7 @@ public class player : MonoBehaviour
     {
         myCamera = Camera.main.gameObject;
         myCanvas = GameObject.FindGameObjectWithTag("mainCanvas");
+       // Cursor.lockState = CursorLockMode.Locked; 
     }
 
     // Update is called once per frame
@@ -44,7 +45,8 @@ public class player : MonoBehaviour
         transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
         #endregion
 
-        #region Item pickup
+        #region Hand action
+        discardMode = Input.GetKey(KeyCode.LeftShift);
         for (int i = 0; i < 2; i++) {
             if (Input.GetMouseButtonDown(i)) handAction(i);
         }
@@ -58,14 +60,23 @@ public class player : MonoBehaviour
             if(Physics.Raycast(transform.position, lookDirection, out hit, pickupRange, 1 << 9)) {
                 GameObject pickupItem = hit.transform.gameObject;
                 hands[h] = pickupItem;
+                pickupItem.GetComponent<Rigidbody>().isKinematic = true;
                 updateHands(h);
             }
+        }
+        else {
+            item handItem = hands[h].GetComponent<item>();
+            if (discardMode) {
+                handItem.discard();
+                hands[h] = null;
+            }
+            else handItem.use();
         }
     }
 
     void updateHands(int h) {
         hands[h].transform.parent = myCanvas.transform;
-        hands[h].transform.localPosition = new Vector3(-140 + 340 * h, 35, 90);
-        hands[h].transform.localRotation = Quaternion.Euler(new Vector3(180, 30, 240));
+        hands[h].transform.localPosition = new Vector3(-240 + 360 * h, 35 - 185 * h, 90);
+        hands[h].transform.localRotation = Quaternion.Euler(new Vector3(180-180*h, 0+180*h, 240 + 60 * h));
     }
 }

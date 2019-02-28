@@ -8,8 +8,10 @@ public abstract class item : MonoBehaviour
     public GameObject myPrefab;
     public int damage = 1;
 
-    private void Start() {
+    Rigidbody rb;
 
+    private void Start() {
+        rb = GetComponent<Rigidbody>();
     }
 
     public virtual void use() {
@@ -17,5 +19,7 @@ public abstract class item : MonoBehaviour
     }
 
     public virtual void discard() {
+        transform.parent = null;
+        rb.isKinematic = false;
     }
 }
