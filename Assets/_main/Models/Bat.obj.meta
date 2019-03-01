@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 1b827d65c5f3848468451bef69e33fea
+guid: eb895b514d9557641be2abca6ba3194c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: pCylinder1
-    100002: //RootNode
-    400000: pCylinder1
-    400002: //RootNode
+    100000: //RootNode
+    100002: pCylinder1
+    400000: //RootNode
+    400002: pCylinder1
     2100000: pCylinder1Mat
     2300000: pCylinder1
     3300000: pCylinder1
