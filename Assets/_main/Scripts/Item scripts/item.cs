@@ -19,7 +19,9 @@ public abstract class item : MonoBehaviour
     }
 
     public virtual void discard() {
+        Vector3 dPos = transform.position;
         transform.parent = null;
+        transform.position = dPos;
         rb.isKinematic = false;
     }
 }

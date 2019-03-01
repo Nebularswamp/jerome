@@ -5,12 +5,18 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: polySurface3_polySurface1
+    100004: LeafCutters:polySurface3_LeafCutters:polySurface4_LeafCutters:polySurface1
     400000: //RootNode
     400002: polySurface3_polySurface1
+    400004: LeafCutters:polySurface3_LeafCutters:polySurface4_LeafCutters:polySurface1
     2100000: polySurface3_polySurface1Mat
+    2100002: LeafCutters_polySurface3_LeafCutters_polySurface4_LeafCutters_polySurface1Mat
     2300000: polySurface3_polySurface1
+    2300002: LeafCutters:polySurface3_LeafCutters:polySurface4_LeafCutters:polySurface1
     3300000: polySurface3_polySurface1
+    3300002: LeafCutters:polySurface3_LeafCutters:polySurface4_LeafCutters:polySurface1
     4300000: polySurface3_polySurface1
+    4300002: LeafCutters:polySurface3_LeafCutters:polySurface4_LeafCutters:polySurface1
   externalObjects: {}
   materials:
     importMaterials: 1
