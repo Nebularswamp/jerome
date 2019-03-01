@@ -76,7 +76,7 @@ public class player : MonoBehaviour
 
     void updateHands(int h) {
         hands[h].transform.parent = myCanvas.transform;
-        hands[h].transform.localPosition = new Vector3(-240 + 360 * h, 35 - 185 * h, 90);
+       // hands[h].transform.localPosition = new Vector3(-240 + 360 * h, 35 - 185 * h, 90);
         hands[h].transform.localRotation = Quaternion.Euler(new Vector3(180-180*h, 0+180*h, 240 + 60 * h));
     }
 }
