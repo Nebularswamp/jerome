@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rube : item
+public class spear : item
 {
-    public override void use() {
-
-    }
-   
+    
 }

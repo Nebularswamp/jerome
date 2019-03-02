@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class blegg : item
+public class poolStick : item
 {
-    
+  
 }

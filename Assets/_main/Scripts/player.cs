@@ -6,6 +6,7 @@ public class player : MonoBehaviour
 {
     #region public vars
     public float speed = 5f;
+    public craftingList cl;
     #endregion
 
     #region local vars
@@ -25,6 +26,10 @@ public class player : MonoBehaviour
     GameObject myInventoryDisplay;
     GameObject myInventoryCursor;
     int invAccess = 0;
+
+    //crafting
+    Dictionary<List<string>, GameObject> myCraftingList = new Dictionary<List<string>, GameObject>();
+
     #endregion
 
     // Start is called before the first frame update
@@ -37,6 +42,15 @@ public class player : MonoBehaviour
 
         myInventoryDisplay.SetActive(invOpen);
         // Cursor.lockState = CursorLockMode.Locked; 
+
+        //convert crafting list into convenient data structure
+        foreach(craftingRecipe i in cl.craftList) {
+            List<string> cr = new List<string>();
+            for (int j = 0; j < 2; j++) {
+                cr.Add(i.ingredients[j].GetComponent<item>().itemName);
+            }
+            myCraftingList.Add(cr, i.result);
+        }
     }
 
     // Update is called once per frame
@@ -100,6 +114,28 @@ public class player : MonoBehaviour
 
         #endregion
 
+        #region Crafting
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            List<string> craftKey = null;
+            foreach(List<string> l in myCraftingList.Keys) {
+                if (l.Contains(hands[0].GetComponent<item>().itemName) && l.Contains(hands[1].GetComponent<item>().itemName)) {
+                    craftKey = l;
+                    break;
+                }
+            }
+            if (craftKey != null) {
+                GameObject craftObject = myCraftingList[craftKey];
+                for (int i = 0; i < hands.Length; i++) {
+                    Destroy(hands[i]);
+                    hands[i] = null;
+                }
+                craftObject = Instantiate(craftObject);
+                hands[1] = craftObject;
+                updateHands(1);
+            }
+        }
+        #endregion
+
         if (!invOpen) {
             #region Hand action
             discardMode = Input.GetKey(KeyCode.LeftShift);
@@ -117,7 +153,6 @@ public class player : MonoBehaviour
             if(Physics.Raycast(transform.position, lookDirection, out hit, pickupRange, 1 << 9)) {
                 GameObject pickupItem = hit.transform.gameObject;
                 hands[h] = pickupItem;
-                pickupItem.GetComponent<Rigidbody>().isKinematic = true;
                 updateHands(h);
             }
         }
@@ -137,6 +172,7 @@ public class player : MonoBehaviour
             var off = h * 2 - 1;
             hands[h].transform.localPosition = new Vector3(290 * off, -140, 0);
             hands[h].transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 60 * (off * -1)));
+            hands[h].GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 
