@@ -6,6 +6,7 @@ public class player : MonoBehaviour
 {
     #region public vars
     public float speed = 5f;
+    public int maxHp = 5;
     public craftingList cl;
     #endregion
 
@@ -30,18 +31,24 @@ public class player : MonoBehaviour
     //crafting
     Dictionary<List<string>, GameObject> myCraftingList = new Dictionary<List<string>, GameObject>();
 
+    //Stats
+    int hp;
+
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        //get objects
         myCamera = Camera.main.gameObject;
         myCanvas = GameObject.FindGameObjectWithTag("mainCanvas");
         myInventoryDisplay = GameObject.Find("Inventory Display");
         myInventoryCursor = GameObject.Find("Inventory Cursor");
-
         myInventoryDisplay.SetActive(invOpen);
+        
         // Cursor.lockState = CursorLockMode.Locked; 
+
+        //Set stats
 
         //convert crafting list into convenient data structure
         foreach(craftingRecipe i in cl.craftList) {
