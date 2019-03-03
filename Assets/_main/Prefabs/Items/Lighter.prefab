@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 888977979}
   - component: {fileID: 888977981}
   m_Layer: 9
-  m_Name: Lighter
+  m_Name: Lighter 1
   m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e44118db111e048b8d26f4dd57becc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: itemName
-  myPrefab: {fileID: 0}
+  itemName: lighter
+  myPrefab: {fileID: 888977978}
   damage: 1
 --- !u!1 &1474035916
 GameObject:
