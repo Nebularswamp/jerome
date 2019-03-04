@@ -24,4 +24,6 @@ public abstract class item : MonoBehaviour
         transform.position = dPos;
         rb.isKinematic = false;
     }
+
+    
 }

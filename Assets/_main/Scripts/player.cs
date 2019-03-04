@@ -8,6 +8,7 @@ public class player : MonoBehaviour
     #region public vars
     public float speed = 5f;
     public craftingList cl;
+    public int maxHp = 5;
     #endregion
 
     #region local vars
@@ -172,12 +173,13 @@ public class player : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision col) {
+
+    private void OnControllerColliderHit(ControllerColliderHit col) {
         GameObject obj = col.gameObject;
         if(obj.tag == "enemy") {
-            hitStun = 0.7f;
-            moveDirection = (transform.position - obj.transform.position).normalized;
-            moveDirection.y = -0.3f;
+            hitStun = 0.09f;
+            moveDirection = (transform.position - obj.transform.position).normalized*5;
+            moveDirection.y = 0;
             hp -= 1;
             Debug.Log(hp);
         }
