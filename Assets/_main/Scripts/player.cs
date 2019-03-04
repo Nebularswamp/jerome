@@ -58,7 +58,7 @@ public class player : MonoBehaviour
         Physics.IgnoreLayerCollision(10, 9);
 
         //Set stats
-        hp = maxHp;
+        //hp = maxHp;
 
         //convert crafting list into convenient data structure
         foreach(craftingRecipe i in cl.craftList) {
