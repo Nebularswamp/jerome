@@ -18,7 +18,3 @@ MonoBehaviour:
     - {fileID: 3875772960900956493, guid: c430502764d94ad4b97df21e04735e71, type: 3}
     result: {fileID: 6820678062357588363, guid: 4585e214621168944b18952c6ec8ede9,
       type: 3}
-  - ingredients:
-    - {fileID: 888977978, guid: 48991f17a6b8cc94abdd3eeabdd08b16, type: 3}
-    - {fileID: 1006750515, guid: 1dcadc3d8e82764439e54156171d47cb, type: 3}
-    result: {fileID: 131421979, guid: 45cf80e5a4fde8d4580d87939a31e451, type: 3}
