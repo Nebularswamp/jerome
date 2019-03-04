@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class player : MonoBehaviour
 {
     #region public vars
@@ -14,6 +15,7 @@ public class player : MonoBehaviour
     GameObject myCamera;
     Vector3 lookDirection;
     GameObject myCanvas;
+    CharacterController myController;
 
     //item handling
     GameObject[] hands = new GameObject[2];
@@ -30,6 +32,13 @@ public class player : MonoBehaviour
     //crafting
     Dictionary<List<string>, GameObject> myCraftingList = new Dictionary<List<string>, GameObject>();
 
+    //Stats
+    int hp;
+
+    //Movement and collision
+    float hitStun = 0f;
+    Vector3 moveDirection = Vector3.zero;
+
     #endregion
 
     // Start is called before the first frame update
@@ -41,7 +50,15 @@ public class player : MonoBehaviour
         myInventoryCursor = GameObject.Find("Inventory Cursor");
 
         myInventoryDisplay.SetActive(invOpen);
-        // Cursor.lockState = CursorLockMode.Locked; 
+        myController = GetComponent<CharacterController>();
+
+        // Cursor.lockState = CursorLockMode.Locked;
+
+        //movement
+        Physics.IgnoreLayerCollision(10, 9);
+
+        //Set stats
+        hp = maxHp;
 
         //convert crafting list into convenient data structure
         foreach(craftingRecipe i in cl.craftList) {
@@ -70,8 +87,16 @@ public class player : MonoBehaviour
         camR = camR.normalized;
         camF = camF.normalized;
 
-        Vector3 moveDirection = (horizontalDirection * camR + verticalDirection * camF).normalized;
-        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+
+        if (hitStun <= 0) {
+            moveDirection = (horizontalDirection * camR + verticalDirection * camF).normalized;
+            moveDirection.y = -1f;
+        }
+        else {
+            hitStun -= Time.deltaTime;
+        }
+
+        myController.Move(moveDirection * speed * Time.deltaTime);
         #endregion
 
         #region Inventory
@@ -84,7 +109,7 @@ public class player : MonoBehaviour
 
         if (invOpen) {
             //identify which slot to access
-            try { invAccess = int.Parse(Input.inputString) - 1; } catch { } 
+            try { invAccess = int.Parse(Input.inputString) - 1; } catch { }
             if (invAccess < 0 || invAccess > 3) invAccess = 0;
 
             //move selection cursor and get selection position
@@ -144,9 +169,19 @@ public class player : MonoBehaviour
             }
             #endregion
         }
-        
+
     }
 
+    private void OnCollisionEnter(Collision col) {
+        GameObject obj = col.gameObject;
+        if(obj.tag == "enemy") {
+            hitStun = 0.7f;
+            moveDirection = (transform.position - obj.transform.position).normalized;
+            moveDirection.y = -0.3f;
+            hp -= 1;
+            Debug.Log(hp);
+        }
+    }
     void handAction(int h) {
         if(hands[h] == null) {
             RaycastHit hit;
