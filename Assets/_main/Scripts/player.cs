@@ -9,12 +9,13 @@ public class player : MonoBehaviour
     public float speed = 5f;
     public craftingList cl;
     public int maxHp = 5;
+
+    [HideInInspector] public Vector3 lookDirection;
     #endregion
 
     #region local vars
     //Referencing other components
     GameObject myCamera;
-    Vector3 lookDirection;
     GameObject myCanvas;
     CharacterController myController;
 
@@ -184,6 +185,7 @@ public class player : MonoBehaviour
             Debug.Log(hp);
         }
     }
+
     void handAction(int h) {
         if(hands[h] == null) {
             RaycastHit hit;
@@ -199,7 +201,13 @@ public class player : MonoBehaviour
                 handItem.discard();
                 hands[h] = null;
             }
-            else handItem.use();
+            else if (handItem.continuous) {
+                handItem.inUse = !handItem.inUse;
+            }
+            else if(handItem.useTime <= 0){
+                handItem.use();
+                handItem.useTime = handItem.defaultUseTime;
+            } 
         }
     }
 
