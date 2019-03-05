@@ -8,6 +8,8 @@ public abstract class item : MonoBehaviour
     public GameObject myPrefab;
     public int damage = 1;
 
+    bool inUse = false;
+
     Rigidbody rb;
 
     private void Start() {
