@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conductive: 0
   burnable: 0
+  destructible: 0
+  destroyTime: 3
   onFire: 0
   defaultFireTime: 0.5
   active: 0
@@ -28,6 +30,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Environment Switch
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348343802807503219, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_TagString
+      value: environmentSwitch
       objectReference: {fileID: 0}
     - target: {fileID: 5348343802807503220, guid: 7b36fd11ca4b53a47a9265a3a636671e,
         type: 3}
