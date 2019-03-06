@@ -17,6 +17,13 @@ public class door : environmentalObject
     // Update is called once per frame
     public override void Update() {
         base.Update();
+        bool check = true;
+        for (int i = 0; i < switches.Length; i++) {
+            if (!switches[i].GetComponent<environmentSwitch>().active) check = false;
+        }
 
+        if (check) {
+            Destroy(gameObject);
+        }
     }
 }

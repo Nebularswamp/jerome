@@ -39,9 +39,9 @@ public abstract class environmentalObject : MonoBehaviour
         switch (obj.tag){
             case "stimulus":
                 stimulus cStim = obj.GetComponent<stimulus>();
-                if (conductive && cStim.myType == stimulusType.electric) electrified = true;
+                if (conductive && cStim.electrified) electrified = true;
                 if (onFire && cStim.myType == stimulusType.water) onFire = false;
-                else if (burnable && cStim.myType == stimulusType.fire) onFire = true;
+                else if (burnable && cStim.hot) onFire = true;
                 break;
 
             case "environmentalObject":

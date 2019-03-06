@@ -14,9 +14,9 @@ public class stimulus : MonoBehaviour
 
     [HideInInspector] public stimulusType myType;
     [HideInInspector] public Vector3 moveDirection;
+    [HideInInspector] public bool hot = true;
+    [HideInInspector] public bool electrified = false;
 
-    bool electrified = false;
-    bool hot = true;
 
     float lifeTime = 4.0f;
 
