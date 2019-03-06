@@ -9,11 +9,12 @@ public abstract class item : MonoBehaviour
     public int damage = 1;
     public float defaultUseTime = 0;
     public bool continuous = false;
+    public float attackRange;
 
     [HideInInspector] public float useTime;
     [HideInInspector] public bool inUse = false;
 
-    internal player myPlayer;
+    protected player myPlayer;
     Rigidbody rb;
 
     private void Start() {
@@ -41,5 +42,19 @@ public abstract class item : MonoBehaviour
         rb.isKinematic = false;
     }
 
-    
+    protected void attack() {
+        Vector3 pPos = myPlayer.transform.position;
+        Collider[] affectedObjects = Physics.OverlapCapsule(pPos, pPos + myPlayer.lookDirection * attackRange, 0.5f);
+        for (int i = 0; i < affectedObjects.Length; i++) {
+            GameObject obj = affectedObjects[i].gameObject;
+            switch (obj.tag) {
+                case "enemy":
+                    obj.GetComponent<enemy>().damage(damage); 
+                    break;
+                case "environmentSwitch":
+                    obj.GetComponent<environmentSwitch>().active = true;
+                    break;
+            }
+        }
+    }
 }

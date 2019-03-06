@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class spear : item
 {
-    
+    public override void use() {
+        attack();
+    }
 }

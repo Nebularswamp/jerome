@@ -15,6 +15,11 @@ MonoBehaviour:
   itemName: Spear
   myPrefab: {fileID: 6820678062357588363}
   damage: 1
+  defaultUseTime: 0.5
+  continuous: 0
+  attackRange: 3
+  useTime: 0
+  inUse: 0
 --- !u!1001 &4825017274063545020
 PrefabInstance:
   m_ObjectHideFlags: 0

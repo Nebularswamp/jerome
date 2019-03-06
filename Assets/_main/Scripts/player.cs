@@ -9,8 +9,10 @@ public class player : MonoBehaviour
     public float speed = 5f;
     public craftingList cl;
     public int maxHp = 5;
+    public float pickupRange = 5.0f;
 
     [HideInInspector] public Vector3 lookDirection;
+    [HideInInspector] public Vector3 moveDirection = Vector3.zero;
     #endregion
 
     #region local vars
@@ -22,7 +24,6 @@ public class player : MonoBehaviour
     //item handling
     GameObject[] hands = new GameObject[2];
     bool discardMode = false;
-    float pickupRange = 5.0f;
 
     //inventory
     GameObject[] inventory = new GameObject[4];
@@ -39,7 +40,7 @@ public class player : MonoBehaviour
 
     //Movement and collision
     float hitStun = 0f;
-    Vector3 moveDirection = Vector3.zero;
+
 
     #endregion
 
@@ -175,16 +176,6 @@ public class player : MonoBehaviour
     }
 
 
-    private void OnControllerColliderHit(ControllerColliderHit col) {
-        GameObject obj = col.gameObject;
-        if(obj.tag == "enemy") {
-            hitStun = 0.09f;
-            moveDirection = (transform.position - obj.transform.position).normalized*5;
-            moveDirection.y = 0;
-            hp -= 1;
-            Debug.Log(hp);
-        }
-    }
 
     void handAction(int h) {
         if(hands[h] == null) {
@@ -221,4 +212,9 @@ public class player : MonoBehaviour
         }
     }
 
+    public void damage() {
+        hitStun = 0.09f;
+        moveDirection.y = 0;
+        hp -= 1;
+    }
 }
