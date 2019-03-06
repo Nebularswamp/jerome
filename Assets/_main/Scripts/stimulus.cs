@@ -19,20 +19,25 @@ public class stimulus : MonoBehaviour
 
 
     float lifeTime = 4.0f;
+    Material myMaterial;
 
     // Start is called before the first frame update
     void Start()
     {
+        myMaterial = GetComponent<Renderer>().material;
         switch (myType){
             case stimulusType.water:
                 hot = false;
+                myMaterial.color = new Color(0, 0, 1);
                 break;
             case stimulusType.fire:
                 hot = true;
+                myMaterial.color = new Color(1, 0, 0);
                 break;
             case stimulusType.electric:
                 hot = true;
                 electrified = true;
+                myMaterial.color = new Color(1, 1, 0);
                 break;
             
         }

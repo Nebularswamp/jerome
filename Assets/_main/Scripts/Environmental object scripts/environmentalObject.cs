@@ -6,6 +6,8 @@ public abstract class environmentalObject : MonoBehaviour
 {
     public bool conductive = false;
     public bool burnable = false;
+    public bool destructible = false;
+    public float destroyTime = 3f;
     public bool onFire = false;
     public float defaultFireTime = 0.5f;
 
@@ -27,6 +29,7 @@ public abstract class environmentalObject : MonoBehaviour
                 stimulus.spawn(stimulusType.fire, transform.position, Vector3.zero, 1);
                 fireTime = defaultFireTime;
             }
+            if (destructible) Destroy(gameObject, destroyTime);
         }
     }
     

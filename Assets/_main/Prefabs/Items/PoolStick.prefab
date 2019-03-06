@@ -15,6 +15,11 @@ MonoBehaviour:
   itemName: Pool Stick
   myPrefab: {fileID: 3875772960900956493}
   damage: 1
+  defaultUseTime: 0
+  continuous: 0
+  attackRange: 0
+  useTime: 0
+  inUse: 0
 --- !u!1001 &2998148116586236538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,6 +141,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5587967376341461916, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
