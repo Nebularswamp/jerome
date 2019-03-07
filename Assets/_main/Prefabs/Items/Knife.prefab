@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9a26d15c1ffff41b9251853f886f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: itemName
-  myPrefab: {fileID: 0}
+  itemName: Knife
+  myPrefab: {fileID: 3067256147686268417}
   damage: 1
-  defaultUseTime: 0
+  defaultUseTime: 0.3
   continuous: 0
-  attackRange: 0
+  attackRange: 3
   useTime: 0
   inUse: 0
 --- !u!1001 &3946024215505327414

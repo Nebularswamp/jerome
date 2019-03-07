@@ -202,7 +202,7 @@ public class player : MonoBehaviour
         }
     }
 
-    void updateHands(int h) {
+    public void updateHands(int h) {
         if (hands[h] != null) {
             hands[h].transform.parent = myCanvas.transform;
             var off = h * 2 - 1;

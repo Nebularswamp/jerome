@@ -24,7 +24,14 @@ public abstract class item : MonoBehaviour
     }
 
     private void Update() {
-        if (useTime > 0) useTime -= Time.deltaTime;
+        if (useTime > 0) {
+            useTime -= Time.deltaTime;
+            if (useTime <= 0) {
+                myPlayer.updateHands(0);
+                myPlayer.updateHands(1);
+            }
+            else transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 20, 0));
+        }
         if (useTime <= 0 && inUse) {
             use();
             useTime = defaultUseTime;

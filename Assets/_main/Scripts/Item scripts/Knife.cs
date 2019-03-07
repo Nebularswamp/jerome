@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class Knife : item
 {
-    
+    public override void use() {
+        attack();
+    }
 }
