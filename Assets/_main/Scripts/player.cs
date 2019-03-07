@@ -145,9 +145,10 @@ public class player : MonoBehaviour
                     //update object positions
                     updateHands(i);
                     if (invObj != null) {
-                        invObj.transform.parent = myInventoryDisplay.transform;
+                        invObj.transform.SetParent(myInventoryDisplay.transform);
                         invObj.transform.localPosition = pos;
                         invObj.transform.localRotation = Quaternion.identity;
+                        invObj.transform.localScale = new Vector3(100,100,100)/invObj.GetComponent<Renderer>().bounds.size.magnitude;
                     }
                 }
             }
@@ -218,7 +219,10 @@ public class player : MonoBehaviour
 
     public void updateHands(int h) {
         if (hands[h] != null) {
-            hands[h].transform.parent = myCanvas.transform;
+            item hItem = hands[h].GetComponent<item>();
+            hands[h].transform.SetParent(myCanvas.transform);
+            if (hItem.uiScale != Vector3.zero) hands[h].transform.localScale = hItem.uiScale;
+            else hItem.uiScale = hands[h].transform.localScale;
             var off = h * 2 - 1;
             hands[h].transform.localPosition = new Vector3(290 * off, -140, 0);
             hands[h].transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 60 * (off * -1)));

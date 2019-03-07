@@ -13,6 +13,7 @@ public abstract class item : MonoBehaviour
 
     [HideInInspector] public float useTime;
     [HideInInspector] public bool inUse = false;
+    [HideInInspector] public Vector3 uiScale = Vector3.zero;
 
     protected player myPlayer;
     Rigidbody rb;

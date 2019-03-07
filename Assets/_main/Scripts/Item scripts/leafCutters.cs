@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class leafCutters : item
 {
-    
+    public override void use() {
+        base.use();
+        attack();
+    }
 }

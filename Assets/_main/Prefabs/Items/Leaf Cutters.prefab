@@ -15,9 +15,9 @@ MonoBehaviour:
   itemName: Leaf Cutters
   myPrefab: {fileID: 705667454762458234}
   damage: 1
-  defaultUseTime: 0
+  defaultUseTime: 0.3
   continuous: 0
-  attackRange: 0
+  attackRange: 2
   useTime: 0
   inUse: 0
 --- !u!1001 &1556281628800210765
