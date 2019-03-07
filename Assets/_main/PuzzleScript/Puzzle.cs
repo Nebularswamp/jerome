@@ -9,17 +9,18 @@ using UnityEngine;
 // when you place the pieces, it get on the board automatically
 
 /**
- * Problem incounter 
+ * Problem encounter 
  *
- * - when assign to child object, it won't move with the parent while position are lock
+ * - when assign to child object, it won't move with the parent while position are lock FIXED
+ * - when picking up and placing image one by one an error occur but not when I take all of them and place them
  * 
  *
- * TODO: detect when we are near the Board
- * TODO: build a test condition if we have one or two pieces to place
- * TODO: test the pieces while scatter around
- * TODO: in the player script, player must be able to hold value to test witch our dictionary values
+ * detect when we are near the Board DONE
+ * TODO: build a test condition if we have one or two pieces to place :NOT PERFECT READ ABOVE
+ * test the pieces while scatter around DONE
+ * in the player script, player must be able to hold value to test witch our dictionary values DONE
  * TODO: test, test, test.....
- * TODO: test witch original game scene
+ * TODO: test with original game scene
  *
  * interesting features(just a though...):
  * board size increase to match image pieces  
@@ -30,16 +31,16 @@ public class Puzzle : MonoBehaviour
 {
     //texture file or image to add 
     public Texture2D image;
-    public int numberOfPiecesPerRow = 3;//set the number of rows and colum you wish to cut
+    public int numberOfPiecesPerRow = 3;//set the number of rows and column you wish to cut
 
     [SerializeField]
     private Sprite[,] sprites;//to turn your image into a sprite multidimensional array
-    private List<GameObject> gameObjects; //assign my sprite to gameObject 
+    public List<GameObject> spriteObjects; //assign my sprite to gameObject 
 
     private List<Vector3> savedPosition;
     
     //dictionary to save final position and the piece number
-    private Dictionary<Vector3,int> savedBlockNumberAndPosition;
+    public Dictionary<Vector3,int> savedBlockNumberAndPosition;
 
     //Testing Value for now
     private bool hasPieces = true;
@@ -57,12 +58,12 @@ public class Puzzle : MonoBehaviour
         //testing...
         savedPosition = new List<Vector3>();
         
-        //initiale a dictionnary
+        //initialise a dictionnary
         savedBlockNumberAndPosition = new Dictionary<Vector3, int>();//testing...
 
         //main things
         sprites = new Sprite[numberOfPiecesPerRow,numberOfPiecesPerRow]; //an array of pieces
-        gameObjects = new List<GameObject>(); //gameObject to be assign(your image pieces witch will be sprite)
+        spriteObjects = new List<GameObject>(); //gameObject to be assign(your image pieces witch will be sprite)
         splitTexture(image,numberOfPiecesPerRow);//a custom method to split your image into pieces and assign them to sprite gameObjects
 
         
@@ -105,7 +106,7 @@ public class Puzzle : MonoBehaviour
                 y = j;
 
                 // add names while creating gameObject for our Sprite
-                gameObjects.Add(new GameObject("no " +  count ));
+                spriteObjects.Add(new GameObject("no " +  count ));
 
                 //this assign sprites by creating them, "source"-> image : "Rect" -> part of the image we want cut : "Vector2" -> having the pivot point at center 
                 sprites[i,j] = Sprite.Create(source, new Rect( x * singleImagePiece, y * singleImagePiece, singleImagePiece, singleImagePiece), new Vector2(0.5f, 0.5f));
@@ -113,13 +114,16 @@ public class Puzzle : MonoBehaviour
                 print("ImageSize" + "[ "+ (singleImagePiece)+" ]"); //Debug for single image piece
                 
                 //add Sprite component to our newly created gameObjects
-                gameObjects[count].AddComponent<SpriteRenderer>();
+                spriteObjects[count].AddComponent<SpriteRenderer>();
+                
+                //add boxCollider component for collision detection
+                spriteObjects[count].AddComponent<BoxCollider>();
                 
                 //assign our sprites to the component
-                gameObjects[count].GetComponent<SpriteRenderer>().sprite = sprites[i,j];
+                spriteObjects[count].GetComponent<SpriteRenderer>().sprite = sprites[i,j];
                 
                 //set it as a child of the "Puzzle" GameObject 
-                gameObjects[count].transform.parent = transform;
+                //spriteObjects[count].transform.parent = transform;
                
                 
                 //save position of our gameObject //for now testing 
@@ -156,25 +160,7 @@ public class Puzzle : MonoBehaviour
     void Update()
     {
 
-        //THE PLAYER WOULD NEED TO TEST IT VALUES TO KNOW WITCH PIECES IT HAS THEN LOCK IT IN THE BOARD
-        for (int i = 0; i < savedPosition.Count; i++)
-        {
-            //UNFINISHED need to think this through...
-            // need to add in the child view here...
-            
-            //if (hasPieces && nearTheBoard)
-            //{
-                //get the saved position 
-                Vector3 savedPosition = savedBlockNumberAndPosition.ElementAt(i).Key;
-                
-                
-                //GOOD FOR DEBUGGING VECTOR3 VALUES AND IMAGINING THE FINISHED STATE
-                //DISABLE IT TO HAVE THE PIECES UNORGANISED
-                gameObjects[i].transform.position = savedPosition;//lock Position of the image at finish state
-            //}
-
-            
-        }
+       
         
         
         
