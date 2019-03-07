@@ -10,6 +10,7 @@ public class player : MonoBehaviour
     public craftingList cl;
     public int maxHp = 5;
     public float pickupRange = 5.0f;
+    public float defaultStepTime = 0.3f;
 
     [HideInInspector] public Vector3 lookDirection;
     [HideInInspector] public Vector3 moveDirection = Vector3.zero;
@@ -41,6 +42,8 @@ public class player : MonoBehaviour
     //Movement and collision
     float hitStun = 0f;
 
+    //sound
+    float stepTime;
 
     #endregion
 
@@ -62,6 +65,7 @@ public class player : MonoBehaviour
 
         //Set stats
         hp = maxHp;
+        stepTime = defaultStepTime;
 
         //convert crafting list into convenient data structure
         foreach(craftingRecipe i in cl.craftList) {
@@ -93,11 +97,19 @@ public class player : MonoBehaviour
 
         if (hitStun <= 0) {
             moveDirection = (horizontalDirection * camR + verticalDirection * camF).normalized;
+            if(moveDirection != Vector3.zero){
+                stepTime -= Time.deltaTime;
+                if(stepTime <= 0){
+                  FindObjectOfType<AudioManager>().Play("footstep");
+                  stepTime = defaultStepTime;
+                }
+            } else stepTime = 0;
             moveDirection.y = -1f;
         }
         else {
             hitStun -= Time.deltaTime;
         }
+
 
         myController.Move(moveDirection * speed * Time.deltaTime);
         #endregion
@@ -107,6 +119,7 @@ public class player : MonoBehaviour
         //opening and closing
         if (Input.GetKeyDown(KeyCode.E)) {
             invOpen = !invOpen;
+            FindObjectOfType<AudioManager>().Play("bagopen");
             myInventoryDisplay.SetActive(invOpen);
         }
 
@@ -147,6 +160,7 @@ public class player : MonoBehaviour
             List<string> craftKey = null;
             foreach(List<string> l in myCraftingList.Keys) {
                 if (l.Contains(hands[0].GetComponent<item>().itemName) && l.Contains(hands[1].GetComponent<item>().itemName)) {
+                    FindObjectOfType<AudioManager>().Play("crafting");
                     craftKey = l;
                     break;
                 }
@@ -198,7 +212,7 @@ public class player : MonoBehaviour
             else if(handItem.useTime <= 0){
                 handItem.use();
                 handItem.useTime = handItem.defaultUseTime;
-            } 
+            }
         }
     }
 
@@ -213,6 +227,7 @@ public class player : MonoBehaviour
     }
 
     public void damage() {
+        FindObjectOfType<AudioManager>().Play("hurtplayer");
         hitStun = 0.09f;
         moveDirection.y = 0;
         hp -= 1;

@@ -30,7 +30,10 @@ public abstract class item : MonoBehaviour
                 myPlayer.updateHands(0);
                 myPlayer.updateHands(1);
             }
-            else transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 20, 0));
+            else {
+                transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 20, 0));
+              }
+
         }
         if (useTime <= 0 && inUse) {
             use();
@@ -39,7 +42,7 @@ public abstract class item : MonoBehaviour
     }
 
     public virtual void use() {
-        
+
     }
 
     public virtual void discard() {
@@ -52,11 +55,12 @@ public abstract class item : MonoBehaviour
     protected void attack() {
         Vector3 pPos = myPlayer.transform.position;
         Collider[] affectedObjects = Physics.OverlapCapsule(pPos, pPos + myPlayer.lookDirection * attackRange, 0.5f);
+        FindObjectOfType<AudioManager>().Play("slash");
         for (int i = 0; i < affectedObjects.Length; i++) {
             GameObject obj = affectedObjects[i].gameObject;
             switch (obj.tag) {
                 case "enemy":
-                    obj.GetComponent<enemy>().damage(damage); 
+                    obj.GetComponent<enemy>().damage(damage);
                     break;
                 case "environmentSwitch":
                     obj.GetComponent<environmentSwitch>().active = true;

@@ -32,6 +32,7 @@ public class enemy : MonoBehaviour
             if(Vector3.Distance(pPos, transform.position) < attackRange){
                 myPlayer.moveDirection = (pPos - transform.position).normalized * 5;
                 myPlayer.damage();
+                FindObjectOfType<AudioManager>().Play("enemyslash");
                 hitStun = 0.5f;
                 moveDirection = Vector3.zero;
             }
@@ -43,6 +44,7 @@ public class enemy : MonoBehaviour
     }
 
     public void damage(int d) {
+        FindObjectOfType<AudioManager>().Play("hurtenemy");
         hp -= d;
         hitStun = 0.09f;
         moveDirection = (transform.position - myPlayer.transform.position).normalized * 5;

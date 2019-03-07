@@ -11,7 +11,7 @@ public class door : environmentalObject
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,6 +23,7 @@ public class door : environmentalObject
         }
 
         if (check) {
+            FindObjectOfType<AudioManager>().Play("puzzle");
             Destroy(gameObject);
         }
     }
