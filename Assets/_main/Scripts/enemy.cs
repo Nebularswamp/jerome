@@ -13,6 +13,8 @@ public class enemy : MonoBehaviour
     Vector3 moveDirection;
     float hitStun = 0f;
     CharacterController myController;
+
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class enemy : MonoBehaviour
 
     public void damage(int d) {
         FindObjectOfType<AudioManager>().Play("hurtenemy");
+        animator.SetBool("Damage", true);
         hp -= d;
         hitStun = 0.09f;
         moveDirection = (transform.position - myPlayer.transform.position).normalized * 5;

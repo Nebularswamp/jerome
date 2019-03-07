@@ -67,6 +67,7 @@ MonoBehaviour:
   speed: 4
   attackRange: 2
   hp: 3
+  animator: {fileID: 7408711931880880413}
 --- !u!95 &7408711931880880413
 Animator:
   serializedVersion: 3
