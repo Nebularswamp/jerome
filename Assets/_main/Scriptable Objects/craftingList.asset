@@ -19,6 +19,7 @@ MonoBehaviour:
     result: {fileID: 6820678062357588363, guid: 4585e214621168944b18952c6ec8ede9,
       type: 3}
   - ingredients:
-    - {fileID: 7871657761160269982, guid: 2f423b35f18628e4c8e96e0dff81b521, type: 3}
+    - {fileID: 783642179950911869, guid: c593d037b5f125a48a3db7d21a710e19, type: 3}
     - {fileID: 6274538124436265267, guid: 7d43c39b6fc946b40a49efdb7fd28034, type: 3}
-    result: {fileID: 135044245768703251, guid: ec5e94964a2ac724f9628ebb03b82144, type: 3}
+    result: {fileID: 7383576116364829286, guid: 56ffce9659c9e904382cb3223d964a0e,
+      type: 3}
