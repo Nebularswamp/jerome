@@ -99,7 +99,7 @@ public class player : MonoBehaviour
             moveDirection = (horizontalDirection * camR + verticalDirection * camF).normalized;
             if(moveDirection != Vector3.zero){
                 stepTime -= Time.deltaTime;
-                if(stepTime <= 0 && FindObjectOfType<AudioManager>()){
+                if(stepTime <= 0){
                   FindObjectOfType<AudioManager>().Play("footstep");
                   stepTime = defaultStepTime;
                 }
