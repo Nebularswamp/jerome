@@ -19,7 +19,7 @@ MonoBehaviour:
     result: {fileID: 6820678062357588363, guid: 4585e214621168944b18952c6ec8ede9,
       type: 3}
   - ingredients:
-    - {fileID: 783642179950911869, guid: c593d037b5f125a48a3db7d21a710e19, type: 3}
+    - {fileID: 3082482855920429081, guid: c593d037b5f125a48a3db7d21a710e19, type: 3}
     - {fileID: 6274538124436265267, guid: 7d43c39b6fc946b40a49efdb7fd28034, type: 3}
-    result: {fileID: 7383576116364829286, guid: 56ffce9659c9e904382cb3223d964a0e,
+    result: {fileID: 9212285290061696778, guid: 56ffce9659c9e904382cb3223d964a0e,
       type: 3}
