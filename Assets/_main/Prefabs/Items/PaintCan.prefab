@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3082482855920429077}
   - component: {fileID: 3082482855920429076}
   - component: {fileID: 3082482855920429079}
-  - component: {fileID: 3082482855920429078}
+  - component: {fileID: 2966289074107785761}
   m_Layer: 9
   m_Name: PaintCan
   m_TagString: item
@@ -115,7 +115,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3082482855920429078
+--- !u!114 &2966289074107785761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,14 +124,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3082482855920429081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf897464afae0e341a67511cb0a3e50a, type: 3}
+  m_Script: {fileID: 11500000, guid: 486950a7ec1f37a4895b1e56aa2d5221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Paint Can
-  myPrefab: {fileID: 3082482855920429081}
+  itemName: itemName
+  myPrefab: {fileID: 0}
   damage: 1
-  defaultUseTime: 0.5
-  continuous: 1
+  defaultUseTime: 0
+  continuous: 0
   attackRange: 0
   useTime: 0
   inUse: 0
