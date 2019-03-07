@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   craftList:
   - ingredients:
-    - {fileID: 3311302422367767425, guid: 3bb73bab54ef8184a90bc5e3f56e67e9, type: 3}
+    - {fileID: 987407446487500472, guid: 6f46f2039cba31248aa1721e07f9a997, type: 3}
     - {fileID: 3875772960900956493, guid: c430502764d94ad4b97df21e04735e71, type: 3}
     result: {fileID: 6820678062357588363, guid: 4585e214621168944b18952c6ec8ede9,
       type: 3}
+  - ingredients:
+    - {fileID: 7871657761160269982, guid: 2f423b35f18628e4c8e96e0dff81b521, type: 3}
+    - {fileID: 6274538124436265267, guid: 7d43c39b6fc946b40a49efdb7fd28034, type: 3}
+    result: {fileID: 135044245768703251, guid: ec5e94964a2ac724f9628ebb03b82144, type: 3}
