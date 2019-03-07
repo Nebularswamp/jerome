@@ -11,15 +11,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cde769118d3ff0419f02d2a70502b59, type: 3}
   m_Name: craftingList
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   craftList:
   - ingredients:
-    - {fileID: 987407446487500472, guid: 6f46f2039cba31248aa1721e07f9a997, type: 3}
+    - {fileID: 705667454762458234, guid: ffebd4a2e393dec4e8b9b9e776e0cb38, type: 3}
     - {fileID: 3875772960900956493, guid: c430502764d94ad4b97df21e04735e71, type: 3}
     result: {fileID: 6820678062357588363, guid: 4585e214621168944b18952c6ec8ede9,
       type: 3}
   - ingredients:
-    - {fileID: 7871657761160269982, guid: 2f423b35f18628e4c8e96e0dff81b521, type: 3}
+    - {fileID: 5400096250011216693, guid: 791eb0a6ad340974a84c986b15680547, type: 3}
     - {fileID: 6274538124436265267, guid: 7d43c39b6fc946b40a49efdb7fd28034, type: 3}
     result: {fileID: 6035748813252103584, guid: 2f423b35f18628e4c8e96e0dff81b521,
       type: 3}
