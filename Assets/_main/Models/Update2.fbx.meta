@@ -3362,8 +3362,11 @@ ModelImporter:
     2100008: blinn2
     2100010: blinn5
     2100012: lambert2
+    2100014: lambert5
     2300000: polySurface1131
+    2300002: //RootNode
     3300000: polySurface1131
+    3300002: //RootNode
     4300000: polySurface1131
   externalObjects: {}
   materials:
