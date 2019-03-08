@@ -23,20 +23,27 @@ public class enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(hitStun > 0f) {
+
+        if (hitStun > 0f) {
             hitStun -= Time.deltaTime;
         }
         else {
             Vector3 pPos = myPlayer.transform.position;
-            moveDirection = (pPos - transform.position).normalized;
-            if(Vector3.Distance(pPos, transform.position) < attackRange){
-                myPlayer.moveDirection = (pPos - transform.position).normalized * 5;
-                myPlayer.damage();
-                FindObjectOfType<AudioManager>().Play("enemyslash");
-                hitStun = 0.5f;
-                moveDirection = Vector3.zero;
+            Vector3 pDir = (pPos - transform.position).normalized;
+            RaycastHit hit;
+            Physics.Raycast(transform.position, pDir, out hit);
+            if (hit.transform.tag == "Player") {
+                moveDirection = pDir;
+                if (Vector3.Distance(pPos, transform.position) < attackRange) {
+                    myPlayer.moveDirection = pDir * 5;
+                    myPlayer.damage();
+                    FindObjectOfType<AudioManager>().Play("enemyslash");
+                    hitStun = 0.5f;
+                    moveDirection = Vector3.zero;
+                }
             }
         }
+        
         moveDirection.y = -1f;
         myController.Move(speed * moveDirection * Time.deltaTime);
 

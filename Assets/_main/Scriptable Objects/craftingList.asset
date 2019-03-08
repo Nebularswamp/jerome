@@ -23,3 +23,7 @@ MonoBehaviour:
     - {fileID: 6274538124436265267, guid: 7d43c39b6fc946b40a49efdb7fd28034, type: 3}
     result: {fileID: 6035748813252103584, guid: 2f423b35f18628e4c8e96e0dff81b521,
       type: 3}
+  - ingredients:
+    - {fileID: 3067256147686268417, guid: 2203d09197600254691b2ce32d66546b, type: 3}
+    - {fileID: 3067256147686268417, guid: 2203d09197600254691b2ce32d66546b, type: 3}
+    result: {fileID: 705667454762458234, guid: ffebd4a2e393dec4e8b9b9e776e0cb38, type: 3}

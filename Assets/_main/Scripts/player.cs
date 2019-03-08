@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -158,7 +159,7 @@ public class player : MonoBehaviour
         #endregion
 
         #region Crafting
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && !hands.Any(i => i == null)) {
             List<string> craftKey = null;
             foreach(List<string> l in myCraftingList.Keys) {
                 if (l.Contains(hands[0].GetComponent<item>().itemName) && l.Contains(hands[1].GetComponent<item>().itemName)) {
@@ -229,7 +230,7 @@ public class player : MonoBehaviour
             if (hItem.uiScale != Vector3.zero) hands[h].transform.localScale = hItem.uiScale;
             else hItem.uiScale = hands[h].transform.localScale;
             var off = h * 2 - 1;
-            hands[h].transform.localPosition = new Vector3(290 * off, -140, 0);
+            hands[h].transform.localPosition = new Vector3(290 * off, -120, 0);
             hands[h].transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 60 * (off * -1)));
             hText.text = hItem.itemName;
             //physics
