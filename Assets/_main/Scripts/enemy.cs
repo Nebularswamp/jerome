@@ -13,6 +13,8 @@ public class enemy : MonoBehaviour
     Vector3 moveDirection;
     float hitStun = 0f;
     CharacterController myController;
+
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,17 +35,23 @@ public class enemy : MonoBehaviour
             RaycastHit hit;
             Physics.Raycast(transform.position, pDir, out hit);
             if (hit.transform.tag == "Player") {
+                animator.SetBool("Move", true);
+                animator.SetBool("Damage", false);
+                animator.SetBool("Attacking", false);
                 moveDirection = pDir;
                 if (Vector3.Distance(pPos, transform.position) < attackRange) {
                     myPlayer.moveDirection = pDir * 5;
                     myPlayer.damage();
                     FindObjectOfType<AudioManager>().Play("enemyslash");
+                    animator.SetBool("Attacking", true);
+                    animator.SetBool("Damage", false);
+                    animator.SetBool("Move", false);
                     hitStun = 0.5f;
                     moveDirection = Vector3.zero;
                 }
             }
         }
-        
+
         moveDirection.y = -1f;
         myController.Move(speed * moveDirection * Time.deltaTime);
 
@@ -52,6 +60,9 @@ public class enemy : MonoBehaviour
 
     public void damage(int d) {
         FindObjectOfType<AudioManager>().Play("hurtenemy");
+        animator.SetBool("Damage", true);
+        animator.SetBool("Move", false);
+        animator.SetBool("Attacking", false);
         hp -= d;
         hitStun = 0.09f;
         moveDirection = (transform.position - myPlayer.transform.position).normalized * 5;
