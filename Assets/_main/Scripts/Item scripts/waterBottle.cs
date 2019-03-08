@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class waterBottle : MonoBehaviour
+public class waterBottle : item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public GameObject puddle;
+    public override void use() {
+        base.use();
+        Bounds pBounds = myPlayer.GetComponent<CharacterController>().bounds;
+        Vector3 puddleSpawn = myPlayer.transform.position + myPlayer.lookDirection*myPlayer.pickupRange;
+        puddleSpawn.y = pBounds.center.y - pBounds.extents.y;
+        Instantiate(puddle, puddleSpawn, Quaternion.identity);
     }
 }

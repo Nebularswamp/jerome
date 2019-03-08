@@ -64,6 +64,7 @@ public class player : MonoBehaviour
 
         //movement
         Physics.IgnoreLayerCollision(10, 9);
+        Physics.IgnoreLayerCollision(10, 11);
 
         //Set stats
         hp = maxHp;
