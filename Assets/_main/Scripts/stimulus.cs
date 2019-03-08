@@ -10,7 +10,7 @@ public enum stimulusType {
 
 public class stimulus : MonoBehaviour
 {
-    public float speed = 2f;
+    public float speed = 0.5f;
 
     [HideInInspector] public stimulusType myType;
     [HideInInspector] public Vector3 moveDirection;

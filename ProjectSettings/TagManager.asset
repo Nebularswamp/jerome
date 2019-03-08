@@ -10,6 +10,7 @@ TagManager:
   - stimulus
   - environmentalObject
   - environmentSwitch
+  - puddle
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - PostProcessing
   - Items
   - Player
-  - 
+  - NoPlayerCollision
   - 
   - 
   - 

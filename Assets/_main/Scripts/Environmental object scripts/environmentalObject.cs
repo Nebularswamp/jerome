@@ -6,7 +6,8 @@ public abstract class environmentalObject : MonoBehaviour
 {
     public bool conductive = false;
     public bool burnable = false;
-    public bool destructible = false;
+    public bool waterDestructible = false;
+    public bool fireDestructible = false;
     public float destroyTime = 3f;
     public bool onFire = false;
     public float defaultFireTime = 0.5f;
@@ -26,10 +27,11 @@ public abstract class environmentalObject : MonoBehaviour
         if (onFire) {
             fireTime -= Time.deltaTime;
             if(fireTime <= 0) {
-                stimulus.spawn(stimulusType.fire, transform.position, Vector3.zero, 1);
+                Vector3 fireSpawn = RandomPointInBounds(GetComponent<Collider>().bounds);
+                stimulus.spawn(stimulusType.fire, fireSpawn, Vector3.zero, 1);
                 fireTime = defaultFireTime;
             }
-            if (destructible) Destroy(gameObject, destroyTime);
+            if (fireDestructible) Destroy(gameObject, destroyTime);
         }
     }
     
@@ -43,8 +45,12 @@ public abstract class environmentalObject : MonoBehaviour
             case "stimulus":
                 stimulus cStim = obj.GetComponent<stimulus>();
                 if (conductive && cStim.electrified) electrified = true;
-                if (onFire && cStim.myType == stimulusType.water) onFire = false;
-                else if (burnable && cStim.hot) onFire = true;
+                if (cStim.myType == stimulusType.water) {
+                    if (waterDestructible) Destroy(gameObject);
+                    onFire = false;
+                    burnable = false;
+                }
+                if (burnable && cStim.hot) onFire = true;
                 break;
 
             case "environmentalObject":
@@ -54,6 +60,12 @@ public abstract class environmentalObject : MonoBehaviour
         }
             
     }
-        
-    
+
+    public static Vector3 RandomPointInBounds(Bounds bounds) {
+        return new Vector3(
+            Random.Range(bounds.min.x, bounds.max.x),
+            Random.Range(bounds.min.y, bounds.max.y),
+            Random.Range(bounds.min.z, bounds.max.z)
+        );
+    }
 }
