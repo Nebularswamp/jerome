@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class player : MonoBehaviour
@@ -206,6 +207,7 @@ public class player : MonoBehaviour
             if (discardMode) {
                 handItem.discard();
                 hands[h] = null;
+                updateHands(h);
             }
             else if (handItem.continuous) {
                 handItem.inUse = !handItem.inUse;
@@ -218,16 +220,22 @@ public class player : MonoBehaviour
     }
 
     public void updateHands(int h) {
+        Text hText = GameObject.Find("UI canvas/Item Name " + h.ToString()).GetComponent<Text>();
         if (hands[h] != null) {
-            item hItem = hands[h].GetComponent<item>();
+            item hItem = hands[h].GetComponent<item>(); //get item
+
+            //ui
             hands[h].transform.SetParent(myCanvas.transform);
             if (hItem.uiScale != Vector3.zero) hands[h].transform.localScale = hItem.uiScale;
             else hItem.uiScale = hands[h].transform.localScale;
             var off = h * 2 - 1;
             hands[h].transform.localPosition = new Vector3(290 * off, -140, 0);
             hands[h].transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 60 * (off * -1)));
+            hText.text = hItem.itemName;
+            //physics
             hands[h].GetComponent<Rigidbody>().isKinematic = true;
         }
+        else hText.text = "";
     }
 
     public void damage() {
