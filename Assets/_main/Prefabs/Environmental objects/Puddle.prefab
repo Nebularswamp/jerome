@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conductive: 1
   burnable: 0
-  destructible: 0
+  waterDestructible: 0
+  fireDestructible: 0
   destroyTime: 3
   onFire: 0
   defaultFireTime: 0.5
+  defaultWaterTime: 0.5
 --- !u!1001 &3814356526692169358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,7 +126,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f7934ea2790d89c49a0534a798b8588b, type: 2}
+      objectReference: {fileID: 2100000, guid: cca0286440f0a7c49afa380e67fb978d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b36fd11ca4b53a47a9265a3a636671e, type: 3}
 --- !u!1 &9139619312018735101 stripped
