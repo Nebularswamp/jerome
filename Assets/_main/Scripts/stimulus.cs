@@ -13,18 +13,20 @@ public class stimulus : MonoBehaviour
     public float speed = 0.5f;
 
     [HideInInspector] public stimulusType myType;
-    [HideInInspector] public Vector3 moveDirection;
+    public Vector3 moveDirection;
     [HideInInspector] public bool hot = true;
     [HideInInspector] public bool electrified = false;
 
 
-    float lifeTime = 4.0f;
+    float lifeTime = 1.0f;
     Material myMaterial;
+    Rigidbody myRigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
         myMaterial = GetComponent<Renderer>().material;
+        myRigidbody = GetComponent<Rigidbody>();
         switch (myType){
             case stimulusType.water:
                 hot = false;
@@ -51,7 +53,7 @@ public class stimulus : MonoBehaviour
             Destroy(gameObject);
         }
 
-        transform.position += moveDirection * speed * Time.deltaTime;
+        myRigidbody.velocity = moveDirection * speed;
     }
 
     private void OnCollisionEnter(Collision col) {

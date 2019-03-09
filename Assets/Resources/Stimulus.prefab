@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4521316538074381795}
   - component: {fileID: 4521316538074381796}
   - component: {fileID: 7919547328654324363}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Stimulus
   m_TagString: stimulus
   m_Icon: {fileID: 0}
@@ -105,9 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc1de77c984f1e46b2e5553f2845bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0.5
   myType: 0
   moveDirection: {x: 0, y: 0, z: 0}
+  hot: 1
+  electrified: 0
 --- !u!54 &7919547328654324363
 Rigidbody:
   m_ObjectHideFlags: 0

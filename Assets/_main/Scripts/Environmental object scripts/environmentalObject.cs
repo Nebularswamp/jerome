@@ -30,7 +30,9 @@ public abstract class environmentalObject : MonoBehaviour
             fireTime -= Time.deltaTime;
             if(fireTime <= 0) {
                 Vector3 fireSpawn = RandomPointInBounds(GetComponent<Collider>().bounds);
-                stimulus.spawn(stimulusType.fire, fireSpawn, Vector3.zero, 1);
+                Vector3 fireDirection = Random.onUnitSphere;
+                Debug.Log(fireDirection);
+                stimulus.spawn(stimulusType.fire, fireSpawn, fireDirection, 1);
                 fireTime = defaultFireTime;
             }
             if (fireDestructible) Destroy(gameObject, destroyTime);

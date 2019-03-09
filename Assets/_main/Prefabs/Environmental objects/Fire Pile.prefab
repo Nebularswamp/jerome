@@ -18,7 +18,7 @@ MonoBehaviour:
   fireDestructible: 0
   destroyTime: 3
   onFire: 1
-  defaultFireTime: 0.5
+  defaultFireTime: 0.1
 --- !u!1001 &4145879629440442713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32,6 +32,11 @@ PrefabInstance:
       value: Fire Pile
       objectReference: {fileID: 0}
     - target: {fileID: 4451683364676548471, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4371186672244514401, guid: 7b36fd11ca4b53a47a9265a3a636671e,
         type: 3}
       propertyPath: m_Mesh
       value: 
