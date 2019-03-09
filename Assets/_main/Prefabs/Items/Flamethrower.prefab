@@ -20,6 +20,7 @@ MonoBehaviour:
   attackRange: 0
   useTime: 0
   inUse: 0
+  uiScale: {x: 0, y: 0, z: 0}
 --- !u!1001 &5733439374776944279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32,7 +33,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flamethrower
       objectReference: {fileID: 0}
-    - target: {fileID: 4419556474654754092, guid: d68f0629cfbce764bb8ee52e79c53462,
+    - target: {fileID: 5587967376341461916, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -142,7 +143,7 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5587967376341461916, guid: d68f0629cfbce764bb8ee52e79c53462,
+    - target: {fileID: 4419556474654754092, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -151,7 +152,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cc0eebbdf470c3d45a6f2b1f55f1e7e7, type: 3}
+      objectReference: {fileID: 2100000, guid: 4c45b056e64e6fb42a95ba62c39aafef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d68f0629cfbce764bb8ee52e79c53462, type: 3}
 --- !u!1 &6035748813252103584 stripped
