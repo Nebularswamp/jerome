@@ -1,21 +1,16 @@
 fileFormatVersion: 2
-guid: 812ae59483c13da4fa4210f8af34d9d3
+guid: 61d3ce1851091c8479567a09df4e111a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: roll_up_door:awning_above_roll_up_door:roll_up_door_roll_up_door:polySurface1
-    100004: roll_up_door:main_door_roll_up_door:roll_up_door_roll_up_door:polySurface1
-    400000: //RootNode
-    400002: roll_up_door:awning_above_roll_up_door:roll_up_door_roll_up_door:polySurface1
-    400004: roll_up_door:main_door_roll_up_door:roll_up_door_roll_up_door:polySurface1
+    100000: pCube1
+    100002: //RootNode
+    400000: pCube1
+    400002: //RootNode
     2100000: initialShadingGroup
-    2300000: roll_up_door:awning_above_roll_up_door:roll_up_door_roll_up_door:polySurface1
-    2300002: roll_up_door:main_door_roll_up_door:roll_up_door_roll_up_door:polySurface1
-    3300000: roll_up_door:awning_above_roll_up_door:roll_up_door_roll_up_door:polySurface1
-    3300002: roll_up_door:main_door_roll_up_door:roll_up_door_roll_up_door:polySurface1
-    4300000: roll_up_door:awning_above_roll_up_door:roll_up_door_roll_up_door:polySurface1
-    4300002: roll_up_door:main_door_roll_up_door:roll_up_door_roll_up_door:polySurface1
+    2300000: pCube1
+    3300000: pCube1
+    4300000: pCube1
   externalObjects: {}
   materials:
     importMaterials: 1
