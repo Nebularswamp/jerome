@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conductive: 0
   burnable: 0
-  destructible: 0
+  waterDestructible: 0
+  fireDestructible: 0
   destroyTime: 3
   onFire: 0
   defaultFireTime: 0.5
@@ -31,6 +32,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4451683364676548471, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4371186672244514401, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4371186672244514401, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5348343802807503220, guid: 7b36fd11ca4b53a47a9265a3a636671e,
         type: 3}
@@ -87,26 +103,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8102780356089348622, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2d9d89b2968a4a8478cb6bc2c7415087, type: 2}
+    - target: {fileID: 8102780356089348622, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1365694553969201124, guid: 7b36fd11ca4b53a47a9265a3a636671e,
         type: 3}
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4371186672244514401, guid: 7b36fd11ca4b53a47a9265a3a636671e,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-    - target: {fileID: 4451683364676548471, guid: 7b36fd11ca4b53a47a9265a3a636671e,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-    - target: {fileID: 8102780356089348622, guid: 7b36fd11ca4b53a47a9265a3a636671e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c1979d788d03d843968c67659ca9d91, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b36fd11ca4b53a47a9265a3a636671e, type: 3}
 --- !u!1 &5700926604176534085 stripped
