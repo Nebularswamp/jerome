@@ -13,7 +13,9 @@ public abstract class environmentalObject : MonoBehaviour
     public float defaultFireTime = 0.5f;
 
     float fireTime;
-    bool electrified;
+    protected bool electrified = false;
+    protected bool wet = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,29 +39,9 @@ public abstract class environmentalObject : MonoBehaviour
     
     private void FixedUpdate() {
         electrified = false;
+        environmentCollisions();
     }
 
-    private void OnCollisionStay(Collision col) {
-        GameObject obj = col.gameObject;
-        switch (obj.tag){
-            case "stimulus":
-                stimulus cStim = obj.GetComponent<stimulus>();
-                if (conductive && cStim.electrified) electrified = true;
-                if (cStim.myType == stimulusType.water) {
-                    if (waterDestructible) Destroy(gameObject);
-                    onFire = false;
-                    burnable = false;
-                }
-                if (burnable && cStim.hot) onFire = true;
-                break;
-
-            case "environmentalObject":
-                environmentalObject cE = obj.GetComponent<environmentalObject>();
-                if (cE.electrified) electrified = true;
-                break;
-        }
-            
-    }
 
     public static Vector3 RandomPointInBounds(Bounds bounds) {
         return new Vector3(
@@ -67,5 +49,39 @@ public abstract class environmentalObject : MonoBehaviour
             Random.Range(bounds.min.y, bounds.max.y),
             Random.Range(bounds.min.z, bounds.max.z)
         );
+    }
+
+    public static float boundsRadius(Bounds b) {
+        Vector3 bEx = b.extents;
+        return Mathf.Max(bEx.x, bEx.y, bEx.z);
+
+    }
+
+    public void environmentCollisions() {
+        Bounds b = GetComponent<Collider>().bounds;
+        float r = boundsRadius(b);
+        Collider[] col = Physics.OverlapSphere(b.center, r);
+        foreach(Collider c in col){
+            GameObject obj = c.gameObject;
+            if (obj == gameObject) continue;
+            switch (obj.tag) {
+                case "stimulus":
+                    stimulus cStim = obj.GetComponent<stimulus>();
+                    if (conductive && cStim.electrified) electrified = true;
+                    if (cStim.myType == stimulusType.water) {
+                        if (waterDestructible) Destroy(gameObject);
+                        onFire = false;
+                        wet = true;
+                    }
+                    else wet = false;
+                    if (burnable && cStim.hot && !wet) onFire = true;
+                    break;
+
+                case "environmentalObject":
+                    environmentalObject cE = obj.GetComponent<environmentalObject>();
+                    if (cE.electrified) electrified = true;
+                    break;
+            }
+        }
     }
 }

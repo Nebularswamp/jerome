@@ -64,7 +64,8 @@ public abstract class item : MonoBehaviour
                     obj.GetComponent<enemy>().damage(damage);
                     break;
                 case "environmentSwitch":
-                    obj.GetComponent<environmentSwitch>().active = true;
+                    environmentSwitch s = obj.GetComponent<environmentSwitch>();
+                    if(s.hitSwitch) s.active = true;
                     break;
             }
         }

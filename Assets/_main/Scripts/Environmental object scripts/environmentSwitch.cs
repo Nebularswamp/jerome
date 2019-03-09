@@ -5,7 +5,12 @@ using UnityEngine;
 public class environmentSwitch : environmentalObject
 {
 
-    public bool active = false;
+    
+    public bool hitSwitch = false;
+    public bool electricSwitch = false;
+    public bool waterSwitch = false;
+
+    [HideInInspector] public bool active = false;
 
     Material myMaterial;
     // Start is called before the first frame update
@@ -19,6 +24,8 @@ public class environmentSwitch : environmentalObject
     public override void Update()
     {
         base.Update();
+        if (waterSwitch) active = wet;
+        if (electricSwitch) active = electrified;
         if (active) {
             float h;
             float s;
