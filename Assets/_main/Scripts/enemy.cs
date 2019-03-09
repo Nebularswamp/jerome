@@ -68,4 +68,14 @@ public class enemy : MonoBehaviour
         moveDirection = (transform.position - myPlayer.transform.position).normalized * 5;
         moveDirection.y = 0;
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        GameObject obj = collision.gameObject;
+        if(obj.tag == "stimulus") {
+            if (obj.GetComponent<stimulus>().hot) {
+                damage(1);
+                Destroy(obj);
+            }
+        }
+    }
 }

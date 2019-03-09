@@ -7,6 +7,7 @@ public class door : environmentalObject
     public GameObject[] switches;
 
     bool open = false;
+    bool neverOpened = true;
 
     // Start is called before the first frame update
     void Start()
@@ -17,14 +18,24 @@ public class door : environmentalObject
     // Update is called once per frame
     public override void Update() {
         base.Update();
-        bool check = true;
+        open = true;
         for (int i = 0; i < switches.Length; i++) {
-            if (!switches[i].GetComponent<environmentSwitch>().active) check = false;
+            if (!switches[i].GetComponent<environmentSwitch>().active) open = false;
         }
 
-        if (check) {
-            FindObjectOfType<AudioManager>().Play("puzzle");
-            Destroy(gameObject);
+        if (open) {
+            GetComponent<Renderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
+            if (neverOpened) {
+                FindObjectOfType<AudioManager>().Play("puzzle");
+                neverOpened = false;
+            }
         }
+        else {
+            GetComponent<Renderer>().enabled = true;
+            GetComponent<Collider>().enabled = true;
+        }
+            
+        
     }
 }
