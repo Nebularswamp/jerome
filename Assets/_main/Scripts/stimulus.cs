@@ -11,7 +11,7 @@ public enum stimulusType {
 public class stimulus : MonoBehaviour
 {
     public float speed = 0.5f;
-
+    public GameObject[] particleEffects;
     [HideInInspector] public stimulusType myType;
     [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public bool hot = true;
@@ -20,12 +20,15 @@ public class stimulus : MonoBehaviour
 
     Material myMaterial;
     Rigidbody myRigidbody;
+    GameObject myParticleEffect;
 
     // Start is called before the first frame update
     void Start()
     {
         myMaterial = GetComponent<Renderer>().material;
         myRigidbody = GetComponent<Rigidbody>();
+        myParticleEffect = particleEffects[(int)myType];
+        Instantiate(myParticleEffect, gameObject.transform);
         switch (myType){
             case stimulusType.water:
                 hot = false;

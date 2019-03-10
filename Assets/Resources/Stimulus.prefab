@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4521316538074381797}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -106,10 +106,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  particleEffects:
+  - {fileID: 1800466103103144670, guid: a0a9e287b0b413f48abf466348960f7a, type: 3}
+  - {fileID: 3467564300567152307, guid: 763a299bb0ba5ab48b0b911ff55ffd75, type: 3}
+  - {fileID: 463670907577368236, guid: 3759980f130914d46b83f50cad9596ed, type: 3}
   myType: 0
   moveDirection: {x: 0, y: 0, z: 0}
   hot: 1
   electrified: 0
+  lifeTime: 1
 --- !u!54 &7919547328654324363
 Rigidbody:
   m_ObjectHideFlags: 0
