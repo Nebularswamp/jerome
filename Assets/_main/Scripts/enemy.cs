@@ -39,6 +39,7 @@ public class enemy : MonoBehaviour
                 animator.SetBool("Damage", false);
                 animator.SetBool("Attacking", false);
                 moveDirection = pDir;
+                transform.LookAt(myPlayer.transform);
                 if (Vector3.Distance(pPos, transform.position) < attackRange) {
                     myPlayer.moveDirection = pDir * 5;
                     myPlayer.damage();
