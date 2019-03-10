@@ -29,19 +29,25 @@ public class stimulus : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody>();
         myParticleEffect = particleEffects[(int)myType];
         Instantiate(myParticleEffect, gameObject.transform);
+        bool playSound = false;
+        Vector3 pPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        if (Vector3.Distance(transform.position, pPos) < 5f) playSound = true;
         switch (myType){
             case stimulusType.water:
                 hot = false;
                 myMaterial.color = new Color(0, 0, 1);
+                if(playSound) FindObjectOfType<AudioManager>().Play("water");
                 break;
             case stimulusType.fire:
                 hot = true;
                 myMaterial.color = new Color(1, 0, 0);
+                if (playSound) FindObjectOfType<AudioManager>().Play("fire");
                 break;
             case stimulusType.electric:
                 hot = true;
                 electrified = true;
                 myMaterial.color = new Color(1, 1, 0);
+                if (playSound) FindObjectOfType<AudioManager>().Play("electric");
                 break;
             
         }
