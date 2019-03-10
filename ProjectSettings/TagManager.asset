@@ -10,7 +10,6 @@ TagManager:
   - stimulus
   - environmentalObject
   - environmentSwitch
-  - puddle
   layers:
   - Default
   - TransparentFX
