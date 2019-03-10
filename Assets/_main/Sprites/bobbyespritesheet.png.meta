@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: c2160105c5a01b546a8a3ff9d582ddd8
+guid: 49fca3c71a7ac9c49810d4c179715696
 TextureImporter:
   fileIDToRecycleName:
-    21300000: massimospritesheet_0
-    21300002: massimospritesheet_1
-    21300004: massimospritesheet_2
-    21300006: massimospritesheet_3
-    21300008: massimospritesheet_5
+    21300000: bobbyespritesheet_0
+    21300002: bobbyespritesheet_1
+    21300004: bobbyespritesheet_2
+    21300006: bobbyespritesheet_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -50,9 +49,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 275
+  spritePixelsToUnits: 130
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -65,8 +64,8 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
-    resizeAlgorithm: 1
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -76,8 +75,8 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 4096
-    resizeAlgorithm: 1
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -89,13 +88,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: massimospritesheet_0
+      name: bobbyespritesheet_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 651
-        width: 300
-        height: 625
+        x: 29
+        y: 384
+        width: 128
+        height: 332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,19 +102,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8dafac028de6404cbd50e9e72fd107d
+      spriteID: 1beb9bd6aa1b02848bbae0d83665d5f9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: massimospritesheet_1
+      name: bobbyespritesheet_1
       rect:
         serializedVersion: 2
-        x: 400
-        y: 651
-        width: 300
-        height: 623
+        x: 205
+        y: 384
+        width: 162
+        height: 307
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,19 +122,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 243cc6b0d0e9e6648a3567f594d4e416
+      spriteID: 21e98aa0ba900e248aeeaec273a43de7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: massimospritesheet_2
+      name: bobbyespritesheet_2
       rect:
         serializedVersion: 2
-        x: 843
-        y: 644
-        width: 183
-        height: 620
+        x: 428
+        y: 384
+        width: 125
+        height: 312
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,19 +142,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aad87374604d68745a423467bc8f8f1f
+      spriteID: 4e01c1155b29e6345b8d91d883c5215e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: massimospritesheet_3
+      name: bobbyespritesheet_3
       rect:
         serializedVersion: 2
-        x: 1140
-        y: 656
-        width: 304
-        height: 556
+        x: 628
+        y: 390
+        width: 133
+        height: 305
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,27 +162,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02849ccc836c33c439fac47820fe4813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: massimospritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 1588
-        y: 644
-        width: 210
-        height: 492
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7f0de5a3250122d48ba6c8010715cb51
+      spriteID: ba5a782875e6b9e44ac540989200b6ea
       vertices: []
       indices: 
       edges: []
@@ -191,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 460bdb7bdb6fb6c4c9683d051223bcd6
+    spriteID: ff41125ee982e0440b2ec7031d70c8f3
     vertices: []
     indices: 
     edges: []

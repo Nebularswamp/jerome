@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1038420883237543331}
   - component: {fileID: 4951326219837737802}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyZidi
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2160105c5a01b546a8a3ff9d582ddd8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32a1f780f31d45f43bf27ad3e230f112, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +126,7 @@ Animator:
   m_GameObject: {fileID: 368244053541694736}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d5ede64831bb646458551a6fd1c3079b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3c9f23e9ada38e54db71036205763140, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

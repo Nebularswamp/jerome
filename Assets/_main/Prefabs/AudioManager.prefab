@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: hurtenemy
     clip: {fileID: 8300000, guid: 20f69bcefc478aa4197aa12804d3fe9c, type: 3}
-    volume: 1
+    volume: 0.629
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0.18
@@ -65,9 +65,9 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: footstep
     clip: {fileID: 8300000, guid: ff7a39b357edc3040915861cea84a014, type: 3}
-    volume: 1
+    volume: 0.643
     volumeVariance: 0
-    pitch: 1
+    pitch: 0.63
     pitchVariance: 0.274
     loop: 0
     mixerGroup: {fileID: 0}
@@ -123,6 +123,33 @@ MonoBehaviour:
     volumeVariance: 0
     pitch: 0.59
     pitchVariance: 0.46
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: electric
+    clip: {fileID: 8300000, guid: b8245a194e3caca48b6f1e4264998fca, type: 3}
+    volume: 0.7
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0.327
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: fire
+    clip: {fileID: 8300000, guid: 191b5f39cf47d72448755a0fa439c262, type: 3}
+    volume: 0.7
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0.318
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: water
+    clip: {fileID: 8300000, guid: fea60e5398884404ab78d5d182dc4723, type: 3}
+    volume: 0.7
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0.336
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
