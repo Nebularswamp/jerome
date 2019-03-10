@@ -10,10 +10,6 @@ public class puddle : environmentalObject
     float waterTime;
 
     private void Start() {
-        Collider[] hit = Physics.OverlapBox(transform.position, GetComponent<Collider>().bounds.extents);
-        foreach(Collider i in hit) {
-            if (i.gameObject != gameObject && i.transform.tag == "puddle") Destroy(gameObject);
-        }
         waterTime = defaultWaterTime;   
     }
 

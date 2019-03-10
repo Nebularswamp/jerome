@@ -13,12 +13,11 @@ public class stimulus : MonoBehaviour
     public float speed = 0.5f;
 
     [HideInInspector] public stimulusType myType;
-    public Vector3 moveDirection;
+    [HideInInspector] public Vector3 moveDirection;
     [HideInInspector] public bool hot = true;
     [HideInInspector] public bool electrified = false;
+    [HideInInspector] public float lifeTime = 1.0f;
 
-
-    float lifeTime = 1.0f;
     Material myMaterial;
     Rigidbody myRigidbody;
 
@@ -57,19 +56,27 @@ public class stimulus : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision col) {
-        if(col.gameObject.tag == "stimulus") {
-            stimulus cStim = col.gameObject.GetComponent<stimulus>();
+        GameObject obj = col.gameObject;
+        switch (obj.tag) {
+            case "stimulus":
+                stimulus cStim = col.gameObject.GetComponent<stimulus>();
 
-            if(myType == stimulusType.water) {
-                if (cStim.myType == stimulusType.electric) electrified = true;
-            }
-            if(myType == stimulusType.fire) {
-                if (cStim.myType == stimulusType.water) Destroy(gameObject);
-            }
+                if (myType == stimulusType.water) {
+                    if (cStim.myType == stimulusType.electric) electrified = true;
+                }
+                if (myType == stimulusType.fire) {
+                    if (cStim.myType == stimulusType.water) Destroy(gameObject);
+                }
+                break;
+            case "environmentalObject":
+            case "environmentSwitch":
+                speed = 0f;
+                break;
         }
+
     }
 
-    public static void spawn(stimulusType t, Vector3 pos, Vector3 dir, float randomRange) {
+    public static stimulus spawn(stimulusType t, Vector3 pos, Vector3 dir, float randomRange) {
         float dx = Random.Range(dir.x-randomRange,dir.x+randomRange);
         float dy = Random.Range(dir.y - randomRange, dir.y + randomRange);
         float dz = Random.Range(dir.z - randomRange, dir.z + randomRange);
@@ -79,5 +86,6 @@ public class stimulus : MonoBehaviour
         stimulus newStim = newStimObj.GetComponent<stimulus>();
         newStim.myType = t;
         newStim.moveDirection = new Vector3(dx, dy, dz).normalized;
+        return newStim;
     }
 }

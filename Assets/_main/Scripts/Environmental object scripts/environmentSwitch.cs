@@ -13,11 +13,15 @@ public class environmentSwitch : environmentalObject
     [HideInInspector] public bool active = false;
 
     Material myMaterial;
+    Color startColor;
+    Color activeColor;
     // Start is called before the first frame update
     void Start()
     {
         myMaterial = GetComponent<Renderer>().material;
-        myMaterial.color = Random.ColorHSV(0, 1, 0.99f, 1, 0.2f, 0.22f);
+        startColor = Random.ColorHSV(0, 1, 0.99f, 1, 0.2f, 0.22f);
+        activeColor = brightenColor(startColor, 0.3f);
+        myMaterial.color = startColor;
     }
 
     // Update is called once per frame
@@ -26,14 +30,17 @@ public class environmentSwitch : environmentalObject
         base.Update();
         if (waterSwitch) active = wet;
         if (electricSwitch) active = electrified;
-        if (active) {
-            float h;
-            float s;
-            float v;
-            Color.RGBToHSV(myMaterial.color, out h, out s, out v);
-            v = 0.5f;
-            myMaterial.color = Color.HSVToRGB(h, s, v);
+        if (active) myMaterial.color = activeColor;
+        else myMaterial.color = startColor;
+    }
 
-        }
+    private Color brightenColor(Color c, float a) {
+        float h;
+        float s;
+        float v;
+        Color.RGBToHSV(c, out h, out s, out v);
+        v += a;
+        c = Color.HSVToRGB(h, s, v);
+        return c;
     }
 }

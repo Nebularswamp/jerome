@@ -13,7 +13,7 @@ public abstract class environmentalObject : MonoBehaviour
     public float defaultFireTime = 0.5f;
 
     float fireTime;
-    protected bool electrified = false;
+    public bool electrified = false;
     protected bool wet = false;
 
 
@@ -31,7 +31,6 @@ public abstract class environmentalObject : MonoBehaviour
             if(fireTime <= 0) {
                 Vector3 fireSpawn = RandomPointInBounds(GetComponent<Collider>().bounds);
                 Vector3 fireDirection = Random.onUnitSphere;
-                Debug.Log(fireDirection);
                 stimulus.spawn(stimulusType.fire, fireSpawn, fireDirection, 1);
                 fireTime = defaultFireTime;
             }
@@ -81,7 +80,7 @@ public abstract class environmentalObject : MonoBehaviour
 
                 case "environmentalObject":
                     environmentalObject cE = obj.GetComponent<environmentalObject>();
-                    if (cE.electrified) electrified = true;
+                    if (cE.electrified && conductive) electrified = true;
                     break;
             }
         }
