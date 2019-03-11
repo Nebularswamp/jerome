@@ -20,6 +20,7 @@ MonoBehaviour:
   attackRange: 0
   useTime: 0
   inUse: 0
+  uiScale: {x: 0, y: 0, z: 0}
 --- !u!1001 &5422806761773634052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32,6 +33,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lighter
       objectReference: {fileID: 0}
+    - target: {fileID: 3516605062642337587, guid: d68f0629cfbce764bb8ee52e79c53462,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2c2c137ed032e44797118f115f64ee4, type: 2}
     - target: {fileID: 4419556474654754092, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_Mesh
@@ -145,28 +151,23 @@ PrefabInstance:
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 5.7757998
       objectReference: {fileID: 0}
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 5.7757998
       objectReference: {fileID: 0}
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 5.7757998
       objectReference: {fileID: 0}
     - target: {fileID: 5587967376341461916, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 0e0513b23b85e214da34d12412455a3c, type: 3}
-    - target: {fileID: 3516605062642337587, guid: d68f0629cfbce764bb8ee52e79c53462,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c2c2c137ed032e44797118f115f64ee4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d68f0629cfbce764bb8ee52e79c53462, type: 3}
 --- !u!1 &6274538124436265267 stripped
