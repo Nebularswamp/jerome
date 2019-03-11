@@ -19,6 +19,7 @@ MonoBehaviour:
   destroyTime: 3
   onFire: 0
   defaultFireTime: 0.5
+  electrified: 0
 --- !u!1001 &5604903878198067184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35,12 +36,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: 5d3b00d7c90adb94d9b4a4025346dd26, type: 3}
+      objectReference: {fileID: 4300000, guid: e96eaad7d9598d94793854fcce3eeed1, type: 3}
     - target: {fileID: 4371186672244514401, guid: 7b36fd11ca4b53a47a9265a3a636671e,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: 5d3b00d7c90adb94d9b4a4025346dd26, type: 3}
+      objectReference: {fileID: 4300000, guid: e96eaad7d9598d94793854fcce3eeed1, type: 3}
     - target: {fileID: 5348343802807503220, guid: 7b36fd11ca4b53a47a9265a3a636671e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -95,6 +96,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348343802807503220, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.098435
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348343802807503220, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.098435
+      objectReference: {fileID: 0}
+    - target: {fileID: 5348343802807503220, guid: 7b36fd11ca4b53a47a9265a3a636671e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.098435
       objectReference: {fileID: 0}
     - target: {fileID: 8102780356089348622, guid: 7b36fd11ca4b53a47a9265a3a636671e,
         type: 3}
