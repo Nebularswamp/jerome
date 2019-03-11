@@ -60,7 +60,7 @@ public class player : MonoBehaviour
         myInventoryDisplay.SetActive(invOpen);
         myController = GetComponent<CharacterController>();
 
-        // Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
 
         //movement
         Physics.IgnoreLayerCollision(10, 9);
