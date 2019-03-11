@@ -197,12 +197,16 @@ public class player : MonoBehaviour
 
     void handAction(int h) {
         if(hands[h] == null) {
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, lookDirection, out hit, pickupRange, 1 << 9)) {
-                GameObject pickupItem = hit.transform.gameObject;
-                hands[h] = pickupItem;
-                updateHands(h);
+            Collider[] cItems = Physics.OverlapCapsule(transform.position, transform.position + lookDirection * pickupRange, 0.3f);
+            foreach (Collider col in cItems) {
+                if(col.transform.tag == "item") {
+                    GameObject pickupItem = col.transform.gameObject;
+                    hands[h] = pickupItem;
+                    updateHands(h);
+                    break;
+                }
             }
+                
         }
         else {
             item handItem = hands[h].GetComponent<item>();
