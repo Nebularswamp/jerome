@@ -16,6 +16,11 @@ ModelImporter:
     400008: grandfatherclock:right_grandfatherclock:texture_grandfatherclock:weight_clock_polySurface1317
     400010: grandfatherclock:right_grandfatherclock:texture_grandfatherclock:weight_copy11_clock_polySurface1317
     2100000: blinn5SG
+    2100002: grandfatherclock_body_clock_grandfatherclock_clock_grandfatherclock_texture_polySurface1317Mat
+    2100004: grandfatherclock_face_clock_grandfatherclock_texture_polySurface1317Mat
+    2100006: grandfatherclock_pendulum_clock_grandfatherclock_texture_polySurface1317Mat
+    2100008: grandfatherclock_right_grandfatherclock_texture_grandfatherclock_weight_clock_polySurface1317Mat
+    2100010: grandfatherclock_right_grandfatherclock_texture_grandfatherclock_weight_copy11_clock_polySurface1317Mat
     2300000: grandfatherclock:body_clock_grandfatherclock:clock_grandfatherclock:texture_polySurface1317
     2300002: grandfatherclock:face_clock_grandfatherclock:texture_polySurface1317
     2300004: grandfatherclock:pendulum_clock_grandfatherclock:texture_polySurface1317
