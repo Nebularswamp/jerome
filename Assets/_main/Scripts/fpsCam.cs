@@ -23,7 +23,6 @@ public class fpsCam : MonoBehaviour {
         float rX = Input.GetAxis("Look Vertical");
         float rY = Input.GetAxis("Look Horizontal");
 
-
         if (!lockCam) rot += new Vector3(rX, rY * 16/9, 0) * sensitivity * Time.deltaTime; 
         rot.x = Mathf.Clamp(rot.x, -90, 90); //clamps up-down camera rotation (no backflips allowed)
         transform.rotation = Quaternion.Euler(rot); //apply rotation

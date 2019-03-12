@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class player : MonoBehaviour
@@ -40,12 +41,14 @@ public class player : MonoBehaviour
 
     //Stats
     int hp;
+    bool dead = false;
 
     //Movement and collision
     float hitStun = 0f;
 
     //sound
     float stepTime;
+
 
     #endregion
 
@@ -69,9 +72,10 @@ public class player : MonoBehaviour
         //Set stats
         hp = maxHp;
         stepTime = defaultStepTime;
+        myCanvas.transform.Find("HP Display").gameObject.GetComponent<Text>().text = "HP: " + hp.ToString();
 
         //convert crafting list into convenient data structure
-        foreach(craftingRecipe i in cl.craftList) {
+        foreach (craftingRecipe i in cl.craftList) {
             List<string> cr = new List<string>();
             for (int j = 0; j < 2; j++) {
                 cr.Add(i.ingredients[j].GetComponent<item>().itemName);
@@ -83,112 +87,127 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lookDirection = myCamera.transform.forward;
+        if (!dead) {
+            lookDirection = myCamera.transform.forward;
 
-        #region movement
-        float horizontalDirection = Input.GetAxisRaw("Horizontal");
-        float verticalDirection = Input.GetAxisRaw("Vertical");
+            #region Damage and death
+            if (hp <= 0) {
+                dead = true;
+                myCanvas.transform.Find("Death Message").gameObject.SetActive(true);
+            }
+            #endregion
 
-        //vars for moving relative to camera
-        Vector3 camR = myCamera.transform.right;
-        Vector3 camF = lookDirection;
-        camR.y = 0;
-        camF.y = 0;
-        camR = camR.normalized;
-        camF = camF.normalized;
+            #region movement
+            float horizontalDirection = Input.GetAxisRaw("Horizontal");
+            float verticalDirection = Input.GetAxisRaw("Vertical");
+
+            //vars for moving relative to camera
+            Vector3 camR = myCamera.transform.right;
+            Vector3 camF = lookDirection;
+            camR.y = 0;
+            camF.y = 0;
+            camR = camR.normalized;
+            camF = camF.normalized;
 
 
-        if (hitStun <= 0) {
-            moveDirection = (horizontalDirection * camR + verticalDirection * camF).normalized;
-            if(moveDirection != Vector3.zero){
-                stepTime -= Time.deltaTime;
-                if(stepTime <= 0){
-                  FindObjectOfType<AudioManager>().Play("footstep");
-                  stepTime = defaultStepTime;
+            if (hitStun <= 0) {
+                moveDirection = (horizontalDirection * camR + verticalDirection * camF).normalized; //get move direction
+                if (moveDirection != Vector3.zero) { //play footstep noises
+                    stepTime -= Time.deltaTime;
+                    if (stepTime <= 0) {
+                        FindObjectOfType<AudioManager>().Play("footstep");
+                        stepTime = defaultStepTime;
+                    }
                 }
-            } else stepTime = 0;
-            moveDirection.y = -1f;
-        }
-        else {
-            hitStun -= Time.deltaTime;
-        }
+                else stepTime = 0;
+
+                moveDirection.y = -1f; //gravity
+            }
+            else {
+                hitStun -= Time.deltaTime;
+            }
 
 
-        myController.Move(moveDirection * speed * Time.deltaTime);
-        #endregion
+            myController.Move(moveDirection * speed * Time.deltaTime);
+            #endregion
 
-        #region Inventory
+            #region Inventory
 
-        //opening and closing
-        if (Input.GetKeyDown(KeyCode.E)) {
-            invOpen = !invOpen;
-            FindObjectOfType<AudioManager>().Play("bagopen");
-            myInventoryDisplay.SetActive(invOpen);
-        }
+            //opening and closing
+            if (Input.GetKeyDown(KeyCode.E)) {
+                invOpen = !invOpen;
+                FindObjectOfType<AudioManager>().Play("bagopen");
+                myInventoryDisplay.SetActive(invOpen);
+            }
 
-        if (invOpen) {
-            //identify which slot to access
-            try { invAccess = int.Parse(Input.inputString) - 1; } catch { }
-            if (invAccess < 0 || invAccess > 3) invAccess = 0;
+            if (invOpen) {
+                //identify which slot to access
+                try { invAccess = int.Parse(Input.inputString) - 1; } catch { }
+                if (invAccess < 0 || invAccess > 3) invAccess = 0;
 
-            //move selection cursor and get selection position
-            Vector3 pos = myInventoryCursor.transform.localPosition;
-            pos.x = -90 + 60 * invAccess;
-            myInventoryCursor.transform.localPosition = pos;
-            pos.y = 0;
+                //move selection cursor and get selection position
+                Vector3 pos = myInventoryCursor.transform.localPosition;
+                pos.x = -90 + 60 * invAccess;
+                myInventoryCursor.transform.localPosition = pos;
+                pos.y = 0;
 
-            //swap items if button clicked
-            for (int i = 0; i < 2; i++) {
-                if (Input.GetMouseButtonDown(i)) {
-                    GameObject invObj = inventory[invAccess];
-                    inventory[invAccess] = hands[i];
-                    hands[i] = invObj;
-                    invObj = inventory[invAccess];
+                //swap items if button clicked
+                for (int i = 0; i < 2; i++) {
+                    if (Input.GetMouseButtonDown(i)) {
+                        GameObject invObj = inventory[invAccess];
+                        inventory[invAccess] = hands[i];
+                        hands[i] = invObj;
+                        invObj = inventory[invAccess];
 
-                    //update object positions
-                    updateHands(i);
-                    if (invObj != null) {
-                        invObj.transform.SetParent(myInventoryDisplay.transform);
-                        invObj.transform.localPosition = pos;
-                        invObj.transform.localRotation = Quaternion.identity;
-                        invObj.transform.localScale = new Vector3(100,100,100)/invObj.GetComponent<Renderer>().bounds.size.magnitude;
+                        //update object positions
+                        updateHands(i);
+                        if (invObj != null) {
+                            invObj.transform.SetParent(myInventoryDisplay.transform);
+                            invObj.transform.localPosition = pos;
+                            invObj.transform.localRotation = Quaternion.identity;
+                            invObj.transform.localScale = new Vector3(100, 100, 100) / invObj.GetComponent<Renderer>().bounds.size.magnitude;
+                        }
                     }
                 }
             }
-        }
 
-        #endregion
+            #endregion
 
-        #region Crafting
-        if (Input.GetKeyDown(KeyCode.Space) && !hands.Any(i => i == null)) {
-            List<string> craftKey = null;
-            foreach(List<string> l in myCraftingList.Keys) {
-                if (l.Contains(hands[0].GetComponent<item>().itemName) && l.Contains(hands[1].GetComponent<item>().itemName)) {
-                    FindObjectOfType<AudioManager>().Play("crafting");
-                    craftKey = l;
-                    break;
+            #region Crafting
+            if (Input.GetKeyDown(KeyCode.Space) && !hands.Any(i => i == null)) {
+                List<string> craftKey = null;
+                foreach (List<string> l in myCraftingList.Keys) {
+                    if (l.Contains(hands[0].GetComponent<item>().itemName) && l.Contains(hands[1].GetComponent<item>().itemName)) {
+                        FindObjectOfType<AudioManager>().Play("crafting");
+                        craftKey = l;
+                        break;
+                    }
                 }
-            }
-            if (craftKey != null) {
-                GameObject craftObject = myCraftingList[craftKey];
-                for (int i = 0; i < hands.Length; i++) {
-                    Destroy(hands[i]);
-                    hands[i] = null;
+                if (craftKey != null) {
+                    GameObject craftObject = myCraftingList[craftKey];
+                    for (int i = 0; i < hands.Length; i++) {
+                        Destroy(hands[i]);
+                        hands[i] = null;
+                        updateHands(i);
+                    }
+                    craftObject = Instantiate(craftObject);
+                    hands[1] = craftObject;
+                    updateHands(1);
                 }
-                craftObject = Instantiate(craftObject);
-                hands[1] = craftObject;
-                updateHands(1);
-            }
-        }
-        #endregion
-
-        if (!invOpen) {
-            #region Hand action
-            discardMode = Input.GetKey(KeyCode.LeftShift);
-            for (int i = 0; i < 2; i++) {
-                if (Input.GetMouseButtonDown(i)) handAction(i);
             }
             #endregion
+
+            if (!invOpen) {
+                #region Hand action
+                discardMode = Input.GetKey(KeyCode.LeftShift);
+                for (int i = 0; i < 2; i++) {
+                    if (Input.GetMouseButtonDown(i)) handAction(i);
+                }
+                #endregion
+            }
+        }
+        else {
+            if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
     }
@@ -201,9 +220,11 @@ public class player : MonoBehaviour
             foreach (Collider col in cItems) {
                 if(col.transform.tag == "item") {
                     GameObject pickupItem = col.transform.gameObject;
-                    hands[h] = pickupItem;
-                    updateHands(h);
-                    break;
+                    if (!pickupItem.GetComponent<Rigidbody>().isKinematic) {
+                        hands[h] = pickupItem;
+                        updateHands(h);
+                        break;
+                    }
                 }
             }
                 
@@ -249,5 +270,6 @@ public class player : MonoBehaviour
         hitStun = 0.09f;
         moveDirection.y = 0;
         hp -= 1;
+        myCanvas.transform.Find("HP Display").gameObject.GetComponent<Text>().text = "HP: " + hp.ToString();
     }
 }

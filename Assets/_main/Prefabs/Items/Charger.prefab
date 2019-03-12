@@ -33,6 +33,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Charger
       objectReference: {fileID: 0}
+    - target: {fileID: 3516605062642337587, guid: d68f0629cfbce764bb8ee52e79c53462,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 130364d3a10593741bb3209d7cde97b6, type: 2}
+    - target: {fileID: 4419556474654754092, guid: d68f0629cfbce764bb8ee52e79c53462,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 6c24657f423baff49b51838ca811538a, type: 3}
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -141,28 +151,18 @@ PrefabInstance:
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.0179568
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0179568
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.0179568
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3516605062642337587, guid: d68f0629cfbce764bb8ee52e79c53462,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 130364d3a10593741bb3209d7cde97b6, type: 2}
-    - target: {fileID: 4419556474654754092, guid: d68f0629cfbce764bb8ee52e79c53462,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 6c24657f423baff49b51838ca811538a, type: 3}
     - target: {fileID: 5587967376341461916, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_Mesh
