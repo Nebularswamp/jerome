@@ -20,6 +20,7 @@ MonoBehaviour:
   attackRange: 3
   useTime: 0
   inUse: 0
+  uiScale: {x: 0, y: 0, z: 0}
 --- !u!1001 &3946024215505327414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32,6 +33,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knife
       objectReference: {fileID: 0}
+    - target: {fileID: 3516605062642337587, guid: d68f0629cfbce764bb8ee52e79c53462,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c45b056e64e6fb42a95ba62c39aafef, type: 2}
     - target: {fileID: 4419556474654754092, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_Mesh
@@ -95,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
@@ -135,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 816308194530218794, guid: d68f0629cfbce764bb8ee52e79c53462,
         type: 3}
@@ -162,11 +168,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 3687817d7d5ca8d478d32d8dd702d56c, type: 3}
-    - target: {fileID: 3516605062642337587, guid: d68f0629cfbce764bb8ee52e79c53462,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4c45b056e64e6fb42a95ba62c39aafef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d68f0629cfbce764bb8ee52e79c53462, type: 3}
 --- !u!1 &3067256147686268417 stripped
