@@ -135,9 +135,18 @@ public class player : MonoBehaviour
 
             //opening and closing
             if (Input.GetKeyDown(KeyCode.E)) {
-                invOpen = !invOpen;
-                FindObjectOfType<AudioManager>().Play("bagopen");
-                myInventoryDisplay.SetActive(invOpen);
+                bool checkUse = false;
+                foreach (GameObject i in hands) {
+                    if(i != null) {
+                        item it = i.GetComponent<item>();
+                        if (it.useTime > 0 || it.inUse) checkUse = true;
+                    }
+                }
+                if (!checkUse) {
+                    invOpen = !invOpen;
+                    FindObjectOfType<AudioManager>().Play("bagopen");
+                    myInventoryDisplay.SetActive(invOpen);
+                }
             }
 
             if (invOpen) {
